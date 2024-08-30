@@ -44,19 +44,24 @@ const Students = () => {
       console.error(error);
     }
   };
-  
+
   const handleMarkAsMisplaced = async (studentId) => {
     try {
-      await axios.put(`http://localhost:3000/api/students/misplace/${studentId}`);
+      await axios.put(
+        `http://localhost:3000/api/students/misplace/${studentId}`
+      );
       setStudents(students.filter((student) => student._id !== studentId)); // Remove student from the UI after deletion
     } catch (error) {
       setError("Error marking book as misplaced");
       console.error(error);
     }
   };
-  
+
   return (
     <div>
+      <div>
+        <h3>Students</h3>
+      </div>
       {error && <div className="text-red-500">{error}</div>}
       <table className="min-w-full bg-white border border-gray-200">
         <thead>
